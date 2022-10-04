@@ -15,7 +15,7 @@ namespace CaseSolution.API.Controllers
         {
             this._productOperation = productOperation;
         }
-
+        
         [HttpGet]
         [Route("getProduct/{id}")]
         public JsonResult GetProductById(string id) => Json(_productOperation.GetProductById(id));

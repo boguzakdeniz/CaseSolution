@@ -1,0 +1,26 @@
+﻿using CaseSolution.DAL.Interface;
+using CaseSolution.Models.Basket;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CaseSolution.DAL.Context
+{
+    public class BasketRepository : IBasketRepository
+    {
+        public void Add(Basket entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Basket entity)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

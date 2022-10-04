@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.6.66" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\CaseSolution.DAL\CaseSolution.DAL.csproj" />
     <ProjectReference Include="..\CaseSolution.Models\CaseSolution.Models.csproj" />
   </ItemGroup>
