@@ -38,7 +38,6 @@ namespace CaseSolution
             services.AddScoped<IBasketOperation, BasketOperation>();
             services.AddScoped<ICacheOperation, CacheOperation>();
 
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("CoreSwagger", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -70,11 +69,7 @@ namespace CaseSolution
             app.UseSwagger()
             .UseSwaggerUI(c =>
             {
-                //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
                 c.SwaggerEndpoint("/swagger/CoreSwagger/swagger.json", "Swagger Test .Net Core");
-
-                //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "Swagger Petstore Original");
             });
 
             app.UseHttpsRedirection();

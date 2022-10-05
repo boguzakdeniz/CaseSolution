@@ -29,11 +29,7 @@ namespace CaseSolution.API.Controllers
 
         [HttpPost]
         [Route("updateProduct")]
-        public JsonResult UpdateProduct(UpdateProductRequestModel model)
-        {
-            return Json(_productOperation.UpdateProduct(model));
-
-        } //=> Json(_productOperation.UpdateProduct(model));
+        public JsonResult UpdateProduct(UpdateProductRequestModel model) => Json(_productOperation.UpdateProduct(model));
 
         [HttpDelete]
         [Route("deleteProduct")]

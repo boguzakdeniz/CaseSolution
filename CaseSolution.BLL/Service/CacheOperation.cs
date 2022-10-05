@@ -26,7 +26,6 @@ namespace CaseSolution.BLL.Service
 
             _redisDb = _redisClient.GetDatabase(0);
         }
-
            
         public void Clear(string key) => _redisDb.KeyDelete(key);
 

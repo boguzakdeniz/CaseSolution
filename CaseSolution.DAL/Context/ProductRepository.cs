@@ -20,7 +20,6 @@ namespace CaseSolution.DAL.Context
             entity.Id = ObjectId.GenerateNewId();
             _collection.InsertOne(entity);
         }
-
         public void Delete(ObjectId id) => _collection.DeleteOne(x => x.Id == id);
 
         public List<Product> GetAllProducts() => _collection.Find(_ => true).ToList();
@@ -28,7 +27,5 @@ namespace CaseSolution.DAL.Context
         public Product GetProductById(ObjectId id) => _collection.Find(x => x.Id == id)?.FirstOrDefault();
 
         public void Update(Product entity) => _collection.ReplaceOne(x => x.Id == entity.Id, entity);
-
-
     }
 }
