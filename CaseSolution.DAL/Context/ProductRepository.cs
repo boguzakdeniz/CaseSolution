@@ -21,7 +21,7 @@ namespace CaseSolution.DAL.Context
             _collection.InsertOne(entity);
         }
 
-        public void Delete(object id) => _collection.DeleteOne(x => x.Id == (ObjectId)id);
+        public void Delete(ObjectId id) => _collection.DeleteOne(x => x.Id == id);
 
         public List<Product> GetAllProducts() => _collection.Find(_ => true).ToList();
 
