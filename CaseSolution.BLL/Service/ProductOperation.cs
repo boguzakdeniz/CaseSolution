@@ -9,7 +9,7 @@ namespace CaseSolution.BLL.Service
 {
     public class ProductOperation : IProductOperation
     {
-        IProductRepository _productRepository;
+        readonly IProductRepository _productRepository;
         public ProductOperation(IProductRepository productRepository)
         {
             this._productRepository = productRepository;

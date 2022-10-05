@@ -1,4 +1,5 @@
 ﻿using CaseSolution.BLL.Interface;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
@@ -11,16 +12,16 @@ namespace CaseSolution.BLL.Service
 
         readonly IDatabase _redisDb;
 
-        public CacheOperation()
+        public CacheOperation(IConfiguration configuration)
         {
             if (_redisClient is null)
             {
-                _redisClient = ConnectionMultiplexer.Connect("localhost:6379");
+                _redisClient = ConnectionMultiplexer.Connect(configuration["RedisHostPort"]);
             }
 
             _redisClient.ConnectionFailed += delegate (object sender, ConnectionFailedEventArgs e)
             {
-                _redisClient = ConnectionMultiplexer.Connect("localhost:6379");
+                _redisClient = ConnectionMultiplexer.Connect(configuration["RedisHostPort"]);
             };
 
             _redisDb = _redisClient.GetDatabase(0);

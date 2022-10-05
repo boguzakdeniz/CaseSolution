@@ -1,5 +1,6 @@
 ﻿using CaseSolution.DAL.Interface;
 using CaseSolution.Models.Products;
+using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ namespace CaseSolution.DAL.Context
 {
     public class ProductRepository : IProductRepository
     {
-        IMongoCollection<Product> _collection;
+        readonly IMongoCollection<Product> _collection;
 
-        public ProductRepository()
+        public ProductRepository(IConfiguration configuration)
         {
-            _collection = new MongoClient("mongodb+srv://boguzakdeniz:y6yJ0L9fCJDjeHOo@productcluster.pjuthay.mongodb.net/ProductDB?retryWrites=true&w=majority").GetDatabase("ProductDB").GetCollection<Product>("Products");
+            _collection = new MongoClient(configuration["ConnectionStrings"]).GetDatabase("ProductDB").GetCollection<Product>("Products");
         }
         public void Add(Product entity)
         {
