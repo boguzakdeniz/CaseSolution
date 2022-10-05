@@ -1,5 +1,4 @@
 ﻿using CaseSolution.Models.Basket;
-using CaseSolution.Models.Request;
 
 namespace CaseSolution.BLL.Interface
 {
@@ -7,9 +6,9 @@ namespace CaseSolution.BLL.Interface
     {
         public Basket GetProductsInBasket();
 
-        public string AddProductToBasket(ProductRequestModel model);
+        public string AddProductToBasket(ProductBasketModel model);
 
-        public string DeleteProductByIdInBasket(int id);
+        public string DeleteProductByIdInBasket(string id);
 
         public string DeleteAllProductsInBasket();
 

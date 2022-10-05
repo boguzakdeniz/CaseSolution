@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CaseSolution.BLL.Interface
+﻿namespace CaseSolution.BLL.Interface
 {
     public interface ICacheOperation
     {
-        List<T> GetCache<T>(string key);
+        T Get<T>(string key);
+
         void Set<T>(string key, T value);
-        void Append<T>(string key, T value);
+
+        void Clear(string key);
+
 
     }
 }

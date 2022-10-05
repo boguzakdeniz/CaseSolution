@@ -1,32 +1,56 @@
 ﻿using CaseSolution.BLL.Interface;
+using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CaseSolution.BLL.Service
 {
     public class CacheOperation : ICacheOperation
     {
+        static ConnectionMultiplexer _redisClient;
+
         readonly IDatabase _redisDb;
-        public CacheOperation(IDatabase redisDb)
+
+        public CacheOperation()
         {
-            this._redisDb= redisDb;
+            if (_redisClient is null)
+            {
+                _redisClient = ConnectionMultiplexer.Connect("localhost:6379");
+            }
+
+            _redisClient.ConnectionFailed += delegate (object sender, ConnectionFailedEventArgs e)
+            {
+                _redisClient = ConnectionMultiplexer.Connect("localhost:6379");
+            };
+
+            _redisDb = _redisClient.GetDatabase(0);
         }
 
-        public void Append<T>(string key, T value)
-        {
-            throw new NotImplementedException();
-        }
+           
+        public void Clear(string key) => _redisDb.KeyDelete(key);
 
-        public List<T> GetCache<T>(string key)
+        public T Get<T>(string key)
         {
-            throw new NotImplementedException();
-        }
+            var result = _redisDb.StringGet(key);
 
+            if (result.IsNullOrEmpty)
+                return default(T);
+
+            var resultData = JsonConvert.DeserializeObject<T>(result.ToString());
+
+            return resultData;
+        }
         public void Set<T>(string key, T value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                string dataString = JsonConvert.SerializeObject(value);
+                _redisDb.StringSet(key, dataString);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message, "value");
+            }
         }
     }
 }

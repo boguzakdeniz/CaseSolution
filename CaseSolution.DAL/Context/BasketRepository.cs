@@ -1,8 +1,6 @@
 ﻿using CaseSolution.DAL.Interface;
 using CaseSolution.Models.Basket;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CaseSolution.DAL.Context
 {

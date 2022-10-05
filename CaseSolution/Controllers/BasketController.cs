@@ -1,6 +1,5 @@
 ﻿using CaseSolution.BLL.Interface;
-using CaseSolution.Models.Request;
-using Microsoft.AspNetCore.Http;
+using CaseSolution.Models.Basket;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CaseSolution.API.Controllers
@@ -20,12 +19,12 @@ namespace CaseSolution.API.Controllers
 
         [HttpPost]
         [Route("addProductToBasket")]
-        public JsonResult AddProductToBasket(ProductRequestModel model) => Json(_basketOperation.AddProductToBasket(model));
+        public JsonResult AddProductToBasket(ProductBasketModel model) => Json(_basketOperation.AddProductToBasket(model));
       
 
         [HttpDelete]
         [Route("deleteProductByIdInBasket/{id}")]
-        public JsonResult DeleteProductByIdInBasket(int id) => Json(_basketOperation.DeleteProductByIdInBasket(id));      
+        public JsonResult DeleteProductByIdInBasket(string id) => Json(_basketOperation.DeleteProductByIdInBasket(id));      
 
         [HttpDelete]
         [Route("deleteAllProductsInBasket")]

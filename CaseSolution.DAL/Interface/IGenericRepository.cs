@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CaseSolution.DAL.Interface
+﻿namespace CaseSolution.DAL.Interface
 {
     public interface IGenericRepository<T> where T : class
     {

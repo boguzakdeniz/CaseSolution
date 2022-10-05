@@ -37,6 +37,8 @@ namespace CaseSolution
             services.AddScoped<IProductOperation, ProductOperation>();
             services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<IBasketOperation, BasketOperation>();
+            services.AddScoped<ICacheOperation, CacheOperation>();
+
 
             services.AddSwaggerGen(c =>
             {
@@ -53,7 +55,8 @@ namespace CaseSolution
                     },
                     TermsOfService = new Uri("http://swagger.io/terms/")
                 });
-            });   
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,6 +88,7 @@ namespace CaseSolution
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }

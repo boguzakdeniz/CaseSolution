@@ -3,9 +3,7 @@ using CaseSolution.DAL.Interface;
 using CaseSolution.Models.Products;
 using CaseSolution.Models.Request;
 using MongoDB.Bson;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CaseSolution.BLL.Service
 {
@@ -19,7 +17,7 @@ namespace CaseSolution.BLL.Service
         public string AddProduct(ProductRequestModel model)
         {
             if (model is null)
-                return "Ürün eklenemedi";
+                return "Product could not be added.";
 
             Product product = new Product()
             {
@@ -31,17 +29,17 @@ namespace CaseSolution.BLL.Service
 
             _productRepository.Add(product);
 
-            return "Ürün veritabanına eklendi.";
+            return "Product has been added.";
         }
 
         public string DeleteProduct(ObjectId id)
         {
             var product = _productRepository.GetProductById(id);
             if (product is null)
-                return "Ürün bulunamadı.";
+                return "Product was not found.";
 
             _productRepository.Delete(id);
-            return "Ürün veritabanından silindi.";
+            return "Product has been deleted.";
         }
 
         public List<Product> GetAllProducts() => _productRepository.GetAllProducts();
@@ -57,7 +55,7 @@ namespace CaseSolution.BLL.Service
             var productId = new ObjectId(model.Id);
             var product = _productRepository.GetProductById(productId);
             if (product is null)
-                return "Ürün bulunamadı.";
+                return "Product was not found.";
 
             product.Id = productId;
             product.ProductName = model.ProductName;
@@ -65,7 +63,7 @@ namespace CaseSolution.BLL.Service
             product.Amount = model.Amount;
 
             _productRepository.Update(product);
-            return "Ürün güncellendi.";
+            return "Product has been updated";
         }
     }
 }

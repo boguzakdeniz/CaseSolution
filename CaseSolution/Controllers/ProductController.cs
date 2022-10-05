@@ -1,7 +1,6 @@
 ﻿using CaseSolution.BLL.Interface;
 using CaseSolution.Models.Request;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using MongoDB.Bson;
 
 namespace CaseSolution.API.Controllers
