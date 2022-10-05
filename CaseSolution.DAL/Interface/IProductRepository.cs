@@ -4,9 +4,12 @@ using System.Collections.Generic;
 
 namespace CaseSolution.DAL.Interface
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IProductRepository
     {
         public List<Product> GetAllProducts();
         public Product GetProductById(ObjectId id);
+        void Add(Product entity);
+        void Update(Product entity);
+        void Delete(ObjectId id);
     }
 }
