@@ -35,7 +35,6 @@ namespace CaseSolution
             services.AddControllers();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductOperation, ProductOperation>();
-            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped<IBasketOperation, BasketOperation>();
             services.AddScoped<ICacheOperation, CacheOperation>();
 
