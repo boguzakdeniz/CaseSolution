@@ -44,8 +44,7 @@ namespace CaseSolution.BLL.Service
         {
             try
             {
-                string dataString = JsonConvert.SerializeObject(value);
-                _redisDb.StringSet(key, dataString);
+                _redisDb.StringSet(key, JsonConvert.SerializeObject(value););
             }
             catch (Exception ex)
             {

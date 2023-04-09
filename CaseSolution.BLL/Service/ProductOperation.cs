@@ -44,11 +44,8 @@ namespace CaseSolution.BLL.Service
 
         public List<Product> GetAllProducts() => _productRepository.GetAllProducts();
 
-        public Product GetProductById(string id)
-        {
-            var productId = new ObjectId(id);
-            return _productRepository.GetProductById(productId);
-        }
+        public Product GetProductById(string id) => _productRepository.GetProductById(new ObjectId(id));
+        
         public string UpdateProduct(UpdateProductRequestModel model)
         {
             var productId = new ObjectId(model.Id);
